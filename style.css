@@ -1,3 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
+  padding: 0;
   background-color: #d6d6cd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.calc-body {
+  margin: 0;
+box-sizing: border-box;
+width: 380px;
+height: 500px;
+background-color: grey;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+border-radius: 22px;
+box-shadow: inset 0px -8px 20px #111, 0px 15px 10px -13px #111; 
 }
