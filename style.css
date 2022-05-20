@@ -36,7 +36,7 @@ box-shadow: inset 1px -7px 20px #111, 0px 18px 10px -13px #111;
   padding-top: 10px;
   padding-right: 18px;
   background-color: #B4c5b4;
-  margin-top: 12%;
+  margin-top: 8%;
   margin-left: auto;
   margin-right: auto;
   border-radius: 18px;
@@ -46,3 +46,52 @@ border-width: 1.7px;
 box-shadow: inset 3px -2.5px 9px rgb(73, 73, 73);
 }
 
+.clear-delete {
+  width: 320px;
+  height: 60px;
+  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+}
+
+#clear {
+background-color: salmon;
+border-radius: 6px;
+border-style: solid;
+border-width: 1px;
+border-color: black;
+}
+
+#delete {
+  background-color: #aaf;
+  border-radius: 6px;
+  border-style: solid;
+border-width: 1px;
+border-color: black;
+}
+
+.grid-container {
+  width: 320px;
+  height: 260px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 18px;
+  column-gap: 8px;
+}
+
+.button {
+  background-color: #d6d6cd;
+  border-radius: 10px;
+}
+
+#equals {
+  background-color: rgb(253, 188, 67);
+}
