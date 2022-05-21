@@ -49,7 +49,6 @@ box-shadow: inset 3px -2.5px 9px rgb(73, 73, 73);
 .clear-delete {
   width: 320px;
   height: 60px;
-  
   margin-left: auto;
   margin-right: auto;
   margin-top: 5%;
@@ -61,17 +60,21 @@ box-shadow: inset 3px -2.5px 9px rgb(73, 73, 73);
 #clear {
 background-color: salmon;
 border-radius: 6px;
-border-style: solid;
-border-width: 1px;
-border-color: black;
+text-align: center;
+font-family: 'Orbitron', sans-serif;
+padding-top: 10%;
+letter-spacing: .1rem;
+box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
 }
 
 #delete {
   background-color: #aaf;
   border-radius: 6px;
-  border-style: solid;
-border-width: 1px;
-border-color: black;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  padding-top: 10%;
+  letter-spacing: .1rem;
+  box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
 }
 
 .grid-container {
@@ -90,8 +93,26 @@ border-color: black;
 .button {
   background-color: #d6d6cd;
   border-radius: 10px;
+  box-shadow: inset -.5px -2.2px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 15%;
 }
 
 #equals {
   background-color: rgb(253, 188, 67);
+  color: white;
+  font-size: 2rem;
+ padding-top: 3%;
+}
+
+#add {
+  font-size: 2rem;
+  padding-top: 3%;
+}
+
+#subtract {
+  font-size: 2rem;
+  padding-top: 3%;
 }
