@@ -24,7 +24,7 @@ position: absolute;
 top: 50%;
 transform: translateY(-50%);
 border-radius: 22px;
-box-shadow: inset 1px -7px 20px #111, 0px 18px 10px -13px #111; 
+box-shadow: inset .5px -7px 20px rgba(0, 0, 0, .9), 0px 18px 10px -13px #111; 
 }
 
 .calc-display {
@@ -44,6 +44,7 @@ box-shadow: inset 1px -7px 20px #111, 0px 18px 10px -13px #111;
   border-style: none;
 border-width: 1.7px;
 box-shadow: inset 3px -2.5px 9px rgb(73, 73, 73);
+user-select: none;
 }
 
 .clear-delete {
@@ -65,6 +66,7 @@ font-family: 'Orbitron', sans-serif;
 padding-top: 10%;
 letter-spacing: .1rem;
 box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+cursor: pointer;
 }
 
 #delete {
@@ -75,6 +77,7 @@ box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px 
   padding-top: 10%;
   letter-spacing: .1rem;
   box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
 }
 
 .grid-container {
@@ -98,6 +101,7 @@ box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px 
   text-align: center;
   font-size: 1.2rem;
   padding-top: 15%;
+  cursor: pointer;
 }
 
 #equals {
@@ -116,3 +120,63 @@ box-shadow: inset -.5px -2.5px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px 
   font-size: 2rem;
   padding-top: 3%;
 }
+
+/*BUTTONS ON CLICK  SECTION*/
+
+#clear-active {
+  background-color: salmon;
+  border-radius: 6px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  padding-top: 11%;
+  letter-spacing: .1rem;
+  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  }
+
+ #delete-active {
+   background-color: #aaf;
+    border-radius: 6px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    padding-top: 11%;
+    letter-spacing: .1rem;
+    box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    }
+
+.active-button {
+  background-color: blue;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 16%;
+  background-color: #d6d6cd;
+  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#active-id {
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 4%;
+  background-color: #d6d6cd;
+  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+#equals-active {
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  padding-top: 4%;
+  background-color: rgb(253, 188, 67);
+  color: white;
+  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+/*BUTTONS ON CLICK - END*/
