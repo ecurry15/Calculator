@@ -3,6 +3,7 @@ const calcDisplay = document.querySelector('.calc-display');
 const clearButton = document.querySelector('#clear');
 const deleteButton = document.querySelector('#delete');
 const buttons = document.querySelectorAll('.button');
+let inputValue1 = "0";
 
 clearButton.addEventListener('mousedown', function () {
   clearButton.id = "clear-active";
@@ -29,7 +30,15 @@ button.id = "equals-active";
   } else {
 button.className = "active-button";
   };
+if (inputValue1 === "0") {
+inputValue1 = button.textContent;
+} else {
+inputValue1 += button.textContent;
+}
+calcDisplay.textContent = inputValue1;
 }));
+
+
 
 buttons.forEach(button => button.addEventListener('mouseup', function () {
   if (button.id === "active-id" && button.textContent === "+") {
@@ -42,3 +51,27 @@ button.id = "equals";
     button.className = "button";
   };
 }));
+
+// Operators ---
+const addValue = function (value1, value2) {
+return value1 + value2;
+};
+
+const subtractValue = function (value1, value2) {
+  return value1 - value2;
+};
+  
+const multiplyValue = function (value1, value2) {
+  return value1 * value2;
+};
+    
+const divideValue = function (value1, value2) {
+  return value1 / value2;
+};
+ //Operators End ---
+
+ const operate = function (operator, value1, value2) {
+   return operator(value1, value2);
+ }
+
+ console.log(operate(addValue, 10, 8));
