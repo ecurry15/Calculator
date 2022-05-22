@@ -4,9 +4,15 @@ const clearButton = document.querySelector('#clear');
 const deleteButton = document.querySelector('#delete');
 const buttons = document.querySelectorAll('.button');
 let inputValue1 = "0";
+let inputValue2 = "";
+let currentInput = 1;
 
 clearButton.addEventListener('mousedown', function () {
   clearButton.id = "clear-active";
+  currentInput = 1;
+  inputValue1 = "0";
+  inputValue2 = "";
+  calcDisplay.textContent = 0;
 });
 
 clearButton.addEventListener('mouseup', function () {
@@ -15,6 +21,13 @@ clearButton.addEventListener('mouseup', function () {
 
 deleteButton.addEventListener('mousedown', function () {
   deleteButton.id = "delete-active";
+  if (currentInput == 1) {
+inputValue1 = inputValue1.substring(0, inputValue1.length - 1);
+calcDisplay.textContent = inputValue1;
+  } else if (currentInput == 2) {
+    inputValue2 = inputValue2.substring(0, inputValue2.length - 1);
+    calcDisplay.textContent = inputValue2;
+  }
 });
 
 deleteButton.addEventListener('mouseup', function () {
@@ -30,6 +43,7 @@ button.id = "equals-active";
   } else {
 button.className = "active-button";
   };
+
 if (inputValue1 === "0") {
 inputValue1 = button.textContent;
 } else {
