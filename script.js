@@ -14,19 +14,35 @@ let equalsButtonClicked = false;
 
 // Operators ---
 const addValue = function (value1, value2) {
-  return value1 + value2;
+  if ((value1 + value2) % 1 != 0) {
+    return (value1 + value2).toFixed(2);
+        } else {
+          return (value1 + value2);
+        }
   };
   
   const subtractValue = function (value1, value2) {
-    return value1 - value2;
+    if ((value1 - value2) % 1 != 0) {
+      return (value1 - value2).toFixed(2);
+          } else {
+            return (value1 - value2);
+          }
   };
     
   const multiplyValue = function (value1, value2) {
-    return value1 * value2;
+    if ((value1 * value2) % 1 != 0) {
+      return (value1 * value2).toFixed(2);
+          } else {
+            return (value1 * value2);
+          }
   };
       
   const divideValue = function (value1, value2) {
-    return value1 / value2;
+    if ((value1 / value2) % 1 != 0) {
+return (value1 / value2).toFixed(2);
+    } else {
+      return (value1 / value2);
+    }
   };
    //Operators End ---
    const operateChoices = [addValue, subtractValue, multiplyValue, divideValue];
