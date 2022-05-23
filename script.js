@@ -71,6 +71,9 @@ calcDisplay.textContent = inputValue1;
   } else if (currentInput == 2) {
     inputValue2 = inputValue2.substring(0, inputValue2.length - 1);
     calcDisplay.textContent = inputValue2;
+  } else if (currentInput == "display") {
+    inputValue1 = inputValue1.toString().slice(0, -1);
+    calcDisplay.textContent = inputValue1;
   }
 });
 
@@ -97,6 +100,7 @@ buttons.forEach(button => button.addEventListener('mousedown', function () {
       inputValue2 = button.textContent;
       } else {
       inputValue2 += button.textContent;
+      console.log(inputValue2);
       };
       if(inputValue2.length < 10) {
         calcDisplay.textContent = inputValue2;
@@ -156,10 +160,11 @@ operateSelection = 3;
   } else if (operatorClicked === true) {
    if (inputValue2 != "" && button.id === "equals") {
       button.id = "equals-active";
-      inputValue1 =  operate(operateChoices[operateSelection], parseInt(inputValue1), parseInt(inputValue2));
+      inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
       calcDisplay.textContent = inputValue1;
       operatorClicked = false;
       inputValue2 = "";
+      currentInput = "display";
       equalsButtonClicked = true;
     }
   }
