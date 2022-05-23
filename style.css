@@ -139,9 +139,9 @@ cursor: pointer;
   border-radius: 6px;
   text-align: center;
   font-family: 'Orbitron', sans-serif;
-  padding-top: 11%;
+  padding-top: 11.1%;
   letter-spacing: .1rem;
-  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -.5px 0.1px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   }
 
@@ -150,9 +150,9 @@ cursor: pointer;
     border-radius: 6px;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    padding-top: 11%;
+    padding-top: 11.1%;
     letter-spacing: .1rem;
-    box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+    box-shadow: inset -.5px 0.1px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     }
 
@@ -162,9 +162,9 @@ cursor: pointer;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   font-size: 1.2rem;
-  padding-top: 16%;
+  padding-top: 16.3%;
   background-color: #d6d6cd;
-  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -.5px 0.3px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
 
@@ -173,9 +173,9 @@ cursor: pointer;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   font-size: 2rem;
-  padding-top: 4%;
+  padding-top: 4.3%;
   background-color: #d6d6cd;
-  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -.5px 0.3px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
 
@@ -184,10 +184,10 @@ cursor: pointer;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   font-size: 2rem;
-  padding-top: 4%;
+  padding-top: 4.3%;
   background-color: rgb(253, 188, 67);
   color: white;
-  box-shadow: inset -.5px 0px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -.5px 0.3px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   cursor: pointer;
 }
 /*BUTTONS ON CLICK - END*/

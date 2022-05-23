@@ -73,14 +73,18 @@ buttons.forEach(button => button.addEventListener('mousedown', function () {
       } else {
       inputValue1 += button.textContent;
       };
-      calcDisplay.textContent = inputValue1;
+      if(inputValue1.length < 10) {
+        calcDisplay.textContent = inputValue1;
+      };
   } else {
     if (inputValue1 === "0") {
       inputValue2 = button.textContent;
       } else {
       inputValue2 += button.textContent;
-      }
-      calcDisplay.textContent = inputValue2;
+      };
+      if(inputValue2.length < 10) {
+        calcDisplay.textContent = inputValue2;
+      };
   }
  }
   
