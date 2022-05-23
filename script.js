@@ -8,6 +8,29 @@ let inputValue1 = "0";
 let inputValue2 = "";
 let currentInput = 1;
 let operatorClicked = false;
+let equalsButtonClicked = false;
+
+
+
+// Operators ---
+const addValue = function (value1, value2) {
+  return value1 + value2;
+  };
+  
+  const subtractValue = function (value1, value2) {
+    return value1 - value2;
+  };
+    
+  const multiplyValue = function (value1, value2) {
+    return value1 * value2;
+  };
+      
+  const divideValue = function (value1, value2) {
+    return value1 / value2;
+  };
+   //Operators End ---
+   const operateChoices = [addValue, subtractValue, multiplyValue, divideValue];
+   let operateSelection = 5;
 
 //Clear And Delete Click Listners -------
 clearButton.addEventListener('mousedown', function () {
@@ -17,6 +40,7 @@ clearButton.addEventListener('mousedown', function () {
   inputValue2 = "";
   calcDisplay.textContent = 0;
   operatorClicked = false;
+  equalsButtonClicked = false;
 });
 
 clearButton.addEventListener('mouseup', function () {
@@ -41,6 +65,7 @@ deleteButton.addEventListener('mouseup', function () {
 
 //Number Button click ------------
 buttons.forEach(button => button.addEventListener('mousedown', function () {
+ if (equalsButtonClicked === false) {
   button.className = "active-button";
   if (currentInput === 1) {
     if (inputValue1 === "0") {
@@ -57,7 +82,8 @@ buttons.forEach(button => button.addEventListener('mousedown', function () {
       }
       calcDisplay.textContent = inputValue2;
   }
-  console.log(inputValue2);
+ }
+  
 }));
 
 //Number Mouse Up --------------
@@ -82,27 +108,39 @@ if (button.id === "add") {
     inputValue1 += button.textContent;
     currentInput = 2;
     operatorClicked = true;
+    equalsButtonClicked = false;
+    operateSelection = 0;
   } else if (button.id === "subtract") {
     button.id = "active-id";
     inputValue1 += button.textContent;
     currentInput = 2;
     operatorClicked = true;
-  } else if (button.id === "equals") {
-
-  } else {
+    equalsButtonClicked = false;
+    operateSelection = 1;
+  } else if (button.id === "multiply") {
+    button.className = "active-button";
+    inputValue1 += button.textContent;
+    currentInput = 2;
+    operatorClicked = true;
+    equalsButtonClicked = false;
+    operateSelection = 2;
+  } else  if (button.id === "divide") {
 button.className = "active-button";
 inputValue1 += button.textContent;
 currentInput = 2;
+equalsButtonClicked = false;
 operatorClicked = true;
+operateSelection = 3;
   };
   calcDisplay.textContent = inputValue1;
   } else if (operatorClicked === true) {
    if (inputValue2 != "" && button.id === "equals") {
       button.id = "equals-active";
-      inputValue1 = parseInt(inputValue1) + parseInt(inputValue2);
+      inputValue1 =  operate(operateChoices[operateSelection], parseInt(inputValue1), parseInt(inputValue2));
       calcDisplay.textContent = inputValue1;
       operatorClicked = false;
       inputValue2 = "";
+      equalsButtonClicked = true;
     }
   }
 }));
@@ -121,26 +159,9 @@ button.id = "equals";
 }));
 //Operator Click End ----
 
-// Operators ---
-const addValue = function (value1, value2) {
-return value1 + value2;
-};
-
-const subtractValue = function (value1, value2) {
-  return value1 - value2;
-};
-  
-const multiplyValue = function (value1, value2) {
-  return value1 * value2;
-};
-    
-const divideValue = function (value1, value2) {
-  return value1 / value2;
-};
- //Operators End ---
 
  const operate = function (operator, value1, value2) {
    return operator(value1, value2);
  }
 
- console.log(operate(addValue, 10, 8));
+ 
