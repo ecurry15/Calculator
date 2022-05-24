@@ -138,8 +138,7 @@ cursor: pointer;
   box-shadow: inset -.5px -2.2px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   font-family: 'Orbitron', sans-serif;
   text-align: center;
-  font-size: 2rem;
-  
+  font-size: 2rem; 
   cursor: pointer;
 }
 
@@ -232,4 +231,14 @@ cursor: pointer;
 #clear:hover {
   box-shadow: inset -.5px -1.8px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   padding-top: 10.3%;
+}
+
+#decimal:hover {
+  box-shadow: inset -.5px -1.8px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  padding-top: .5%;
+}
+
+#multipy:hover {
+  box-shadow: inset -.5px -1.8px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  padding-top: .5%;
 }
