@@ -81,6 +81,11 @@ calcDisplay.textContent = inputValue1;
   } else if (currentInput == "display") {
     inputValue1 = inputValue1.toString().slice(0, -1);
     calcDisplay.textContent = inputValue1;
+  };
+
+  if (inputValue1 === "") {
+    equalsButtonClicked = false;
+    currentInput = 1;
   }
 });
 //Delete MouseUp ----
@@ -239,3 +244,35 @@ button.id = "equals";
  }
 
  
+
+window.addEventListener('keydown', function(e) {
+const keyPressed = document.querySelector(`div[data-key="${e.keyCode}"]`);
+
+if (equalsButtonClicked === false) {
+  keyPressed.className = "active-button";
+  if (currentInput === 1) {
+    if (inputValue1 === "0") {
+      inputValue1 = keyPressed.textContent;
+      } else {
+      inputValue1 += keyPressed.textContent;
+      };
+      if(inputValue1.length < 10) {
+        calcDisplay.textContent = inputValue1;
+      };
+  } else {
+    if (inputValue1 === "0") {
+      inputValue2 = keyPressed.textContent;
+      } else {
+      inputValue2 += keyPressed.textContent;
+      };
+      if(inputValue2.length < 10) {
+        calcDisplay.textContent = inputValue2;
+      };
+  }
+ }
+
+});
+
+window.addEventListener('keyup', function() {
+
+});
