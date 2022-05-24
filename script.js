@@ -4,12 +4,13 @@ const clearButton = document.querySelector('#clear');
 const deleteButton = document.querySelector('#delete');
 const buttons = document.querySelectorAll('.button');
 const operatorButtons = document.querySelectorAll('.button-operator');
+const decimalButton = document.querySelector('#decimal');
 let inputValue1 = "0";
 let inputValue2 = "";
 let currentInput = 1;
 let operatorClicked = false;
 let equalsButtonClicked = false;
-letdecimalClicked = false;
+let decimalClicked = false;
 
 
 
@@ -45,9 +46,13 @@ return (value1 / value2).toFixed(2);
       return (value1 / value2);
     }
   };
-   //Operators End ---
+//Operators End --------------
+
+//operateSelection updates based on which operator is clicked-
+//Operate() then runs with operateChoices[operateSelection] as its 1st paramater-
    const operateChoices = [addValue, subtractValue, multiplyValue, divideValue];
    let operateSelection = 5;
+//-----
 
 //Clear And Delete Click Listners -------
 clearButton.addEventListener('mousedown', function () {
@@ -58,12 +63,13 @@ clearButton.addEventListener('mousedown', function () {
   calcDisplay.textContent = 0;
   operatorClicked = false;
   equalsButtonClicked = false;
+  decimalClicked = false;
 });
-
+//Clear MouseUp -----
 clearButton.addEventListener('mouseup', function () {
   clearButton.id = "clear";
 });
-
+//Delete MouseDown ----
 deleteButton.addEventListener('mousedown', function () {
   deleteButton.id = "delete-active";
   if (currentInput == 1) {
@@ -77,11 +83,44 @@ calcDisplay.textContent = inputValue1;
     calcDisplay.textContent = inputValue1;
   }
 });
-
+//Delete MouseUp ----
 deleteButton.addEventListener('mouseup', function () {
   deleteButton.id = "delete";
 });
 //Clear And Delete Click Listners End-------
+
+
+//Decimal Click ----------------
+decimalButton.addEventListener('mousedown', function() {
+  if (equalsButtonClicked === false && decimalClicked === false) {
+    decimalButton.id = "active-id";
+    decimalClicked = true;
+    if (currentInput === 1) {
+      if (inputValue1 === "0") {
+        inputValue1 = decimalButton.textContent;
+        } else {
+        inputValue1 += decimalButton.textContent;
+        };
+        if(inputValue1.length < 10) {
+          calcDisplay.textContent = inputValue1;
+        };
+    } else {
+      if (inputValue1 === "0") {
+        inputValue2 = decimalButton.textContent;
+        } else {
+        inputValue2 += decimalButton.textContent;
+        };
+        if(inputValue2.length < 10) {
+          calcDisplay.textContent = inputValue2;
+        };
+    }
+  }
+});
+//Decimal Mouse up -------
+decimalButton.addEventListener('mouseup', function() {
+decimalButton.id = "decimal";
+});
+//Decimal Click END --------
 
 //Number Button click ------------
 buttons.forEach(button => button.addEventListener('mousedown', function () {
@@ -110,7 +149,7 @@ buttons.forEach(button => button.addEventListener('mousedown', function () {
   
 }));
 
-//Number Mouse Up --------------
+//Number Button Mouse Up --------------
 buttons.forEach(button => button.addEventListener('mouseup', function () {
   if (button.id === "active-id" && button.textContent === "+") {
     button.id = "add";
@@ -127,6 +166,7 @@ button.id = "equals";
 //Operators Button click ----
 operatorButtons.forEach(button => button.addEventListener('mousedown', function () {
   if (operatorClicked === false) {
+    decimalClicked = false;
 if (button.id === "add") {
     button.id = "active-id";
     inputValue1 += button.textContent;
@@ -193,7 +233,7 @@ button.id = "equals";
 }));
 //Operator Click End ----
 
-
+//takes user's 1st and 2nd input and calls the function for the specified operator -
  const operate = function (operator, value1, value2) {
    return operator(value1, value2);
  }
