@@ -11,6 +11,7 @@ let currentInput = 1;
 let operatorClicked = false;
 let equalsButtonClicked = false;
 let decimalClicked = false;
+let keydown = false;
 
 
 
@@ -125,7 +126,44 @@ decimalButton.addEventListener('mousedown', function() {
 decimalButton.addEventListener('mouseup', function() {
 decimalButton.id = "decimal";
 });
-//Decimal Click END --------
+
+//Decimal Key Down ----
+window.addEventListener('keydown', function(e) {
+const decimalpress = document.querySelector(`div[data-key="${e.keyCode}"]`);
+if (decimalpress.textContent == "." && equalsButtonClicked === false && decimalClicked === false) {
+  decimalButton.id = "active-id";
+    decimalClicked = true;
+    if (currentInput === 1) {
+      if (inputValue1 === "0") {
+        inputValue1 = decimalButton.textContent;
+        } else {
+        inputValue1 += decimalButton.textContent;
+        };
+        if(inputValue1.length < 10) {
+          calcDisplay.textContent = inputValue1;
+        };
+    } else {
+      if (inputValue1 === "0") {
+        inputValue2 = decimalButton.textContent;
+        } else {
+        inputValue2 += decimalButton.textContent;
+        };
+        if(inputValue2.length < 10) {
+          calcDisplay.textContent = inputValue2;
+        };
+    }
+}
+
+});
+
+window.addEventListener('keyup', function(e) {
+  const decimalKeyUp = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if (decimalKeyUp.textContent === ".") {
+    decimalKeyUp.id = "decimal";
+  }
+});
+//Decimal Click / Press END --------
+
 
 //Number Button click ------------
 buttons.forEach(button => button.addEventListener('mousedown', function () {
@@ -166,7 +204,45 @@ button.id = "equals";
     button.className = "button";
   };
 }));
-//Number Button click End ----
+
+//Number key Down ------------
+window.addEventListener('keydown', function(e) {
+  const keyPressed = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if (keyPressed.id >= 0 && keyPressed.id <= 9 && equalsButtonClicked === false && keydown === false) {
+    keyPressed.className = "active-button";
+    keydown = true;
+    if (currentInput === 1) {
+      if (inputValue1 === "0") {
+        inputValue1 = keyPressed.textContent;
+        } else {
+        inputValue1 += keyPressed.textContent;
+        };
+        if(inputValue1.length < 10) {
+          calcDisplay.textContent = inputValue1;
+        };
+    } else {
+      if (inputValue1 === "0") {
+        inputValue2 = keyPressed.textContent;
+        } else {
+        inputValue2 += keyPressed.textContent;
+        };
+        if(inputValue2.length < 10) {
+          calcDisplay.textContent = inputValue2;
+        };
+    };
+  }
+});
+
+//Number Key Up ------
+window.addEventListener('keyup', function(e) {
+  const keyUp = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if (keyUp.id >= 0 && keyUp.id <= 9) {
+    keyUp.className = "button";
+    keydown = false;
+  }
+});
+  
+//Numbers Click / Press End ----
 
 //Operators Button click ----
 operatorButtons.forEach(button => button.addEventListener('mousedown', function () {
@@ -241,38 +317,8 @@ button.id = "equals";
 //takes user's 1st and 2nd input and calls the function for the specified operator -
  const operate = function (operator, value1, value2) {
    return operator(value1, value2);
- }
+ };
 
  
 
-window.addEventListener('keydown', function(e) {
-const keyPressed = document.querySelector(`div[data-key="${e.keyCode}"]`);
 
-if (equalsButtonClicked === false) {
-  keyPressed.className = "active-button";
-  if (currentInput === 1) {
-    if (inputValue1 === "0") {
-      inputValue1 = keyPressed.textContent;
-      } else {
-      inputValue1 += keyPressed.textContent;
-      };
-      if(inputValue1.length < 10) {
-        calcDisplay.textContent = inputValue1;
-      };
-  } else {
-    if (inputValue1 === "0") {
-      inputValue2 = keyPressed.textContent;
-      } else {
-      inputValue2 += keyPressed.textContent;
-      };
-      if(inputValue2.length < 10) {
-        calcDisplay.textContent = inputValue2;
-      };
-  }
- }
-
-});
-
-window.addEventListener('keyup', function() {
-
-});
