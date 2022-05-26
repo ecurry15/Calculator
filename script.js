@@ -15,7 +15,7 @@ let keydown = false;
 
 
 
-// Operators ---
+// Operator Functions ---
 const addValue = function (value1, value2) {
   if ((value1 + value2) % 1 != 0) {
     return (value1 + value2).toFixed(2);
@@ -47,7 +47,7 @@ return (value1 / value2).toFixed(2);
       return (value1 / value2);
     }
   };
-//Operators End --------------
+//Operator Functions End --------------
 
 //operateSelection updates based on which operator is clicked-
 //Operate() then runs with operateChoices[operateSelection] as its 1st paramater-
@@ -70,6 +70,7 @@ clearButton.addEventListener('mousedown', function () {
 clearButton.addEventListener('mouseup', function () {
   clearButton.id = "clear";
 });
+
 //Delete MouseDown ----
 deleteButton.addEventListener('mousedown', function () {
   deleteButton.id = "delete-active";
@@ -89,11 +90,43 @@ calcDisplay.textContent = inputValue1;
     currentInput = 1;
   }
 });
+
 //Delete MouseUp ----
 deleteButton.addEventListener('mouseup', function () {
   deleteButton.id = "delete";
 });
-//Clear And Delete Click Listners End-------
+
+//Delete Key Down ---
+window.addEventListener('keydown', function (e) {
+const deleteKey = document.querySelector(`div[data-key="${e.keyCode}"]`);
+if (deleteKey.textContent === "DELETE") {
+  deleteButton.id = "delete-active";
+  if (currentInput == 1) {
+inputValue1 = inputValue1.substring(0, inputValue1.length - 1);
+calcDisplay.textContent = inputValue1;
+  } else if (currentInput == 2) {
+    inputValue2 = inputValue2.substring(0, inputValue2.length - 1);
+    calcDisplay.textContent = inputValue2;
+  } else if (currentInput == "display") {
+    inputValue1 = inputValue1.toString().slice(0, -1);
+    calcDisplay.textContent = inputValue1;
+  };
+
+  if (inputValue1 === "") {
+    equalsButtonClicked = false;
+    currentInput = 1;
+  }
+};
+});
+
+//Delete Key Up -----
+window.addEventListener('keyup', function(e) {
+  const deleteKeyUp = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if (deleteKeyUp.textContent === "DELETE") {
+    deleteButton.id = "delete";
+  }
+  }); 
+//Clear And Delete Click / Press Listners End-------
 
 
 //Decimal Click ----------------
@@ -155,7 +188,7 @@ if (decimalpress.textContent == "." && equalsButtonClicked === false && decimalC
 }
 
 });
-
+//Decimal KeyUp -----
 window.addEventListener('keyup', function(e) {
   const decimalKeyUp = document.querySelector(`div[data-key="${e.keyCode}"]`);
   if (decimalKeyUp.textContent === ".") {
@@ -163,7 +196,6 @@ window.addEventListener('keyup', function(e) {
   }
 });
 //Decimal Click / Press END --------
-
 
 //Number Button click ------------
 buttons.forEach(button => button.addEventListener('mousedown', function () {
@@ -208,7 +240,7 @@ button.id = "equals";
 //Number key Down ------------
 window.addEventListener('keydown', function(e) {
   const keyPressed = document.querySelector(`div[data-key="${e.keyCode}"]`);
-  if (keyPressed.id >= 0 && keyPressed.id <= 9 && equalsButtonClicked === false && keydown === false) {
+  if (keyPressed.id >= 0 && keyPressed.id <= 9 && equalsButtonClicked === false && keydown === false && keyPressed.id != "decimal") {
     keyPressed.className = "active-button";
     keydown = true;
     if (currentInput === 1) {
@@ -236,12 +268,11 @@ window.addEventListener('keydown', function(e) {
 //Number Key Up ------
 window.addEventListener('keyup', function(e) {
   const keyUp = document.querySelector(`div[data-key="${e.keyCode}"]`);
-  if (keyUp.id >= 0 && keyUp.id <= 9) {
+  if (keyUp.id >= 0 && keyUp.id <= 9 && keyUp.id != "decimal" && keyUp.id != "delete") {
     keyUp.className = "button";
     keydown = false;
   }
 });
-  
 //Numbers Click / Press End ----
 
 //Operators Button click ----
@@ -312,7 +343,85 @@ button.id = "equals";
     button.className = "button";
   };
 }));
-//Operator Click End ----
+
+//Operator Key Down ----
+window.addEventListener('keydown', function(e) {
+const operatorDown = document.querySelector(`div[data-key="${e.keyCode}"]`);
+if (operatorClicked === false) { 
+  if (operatorDown.id === "add") {
+      operatorDown.id = "active-id";
+      inputValue1 += operatorDown.textContent;
+      currentInput = 2;
+      operatorClicked = true;
+      equalsButtonClicked = false;
+      operateSelection = 0;
+      decimalClicked = false;
+      calcDisplay.textContent = inputValue1;
+    } else if (operatorDown.id === "subtract") {
+      operatorDown.id = "active-id";
+      inputValue1 += operatorDown.textContent;
+      currentInput = 2;
+      operatorClicked = true;
+      equalsButtonClicked = false;
+      operateSelection = 1;
+      decimalClicked = false;
+      calcDisplay.textContent = inputValue1;
+    } else if (operatorDown.id === "multiply") {
+      operatorDown.className = "active-button";
+      inputValue1 += operatorDown.textContent;
+      currentInput = 2;
+      operatorClicked = true;
+      equalsButtonClicked = false;
+      operateSelection = 2;
+      calcDisplay.textContent = inputValue1;
+    } else  if (operatorDown.id === "divide") {
+      operatorDown.className = "active-button";
+      inputValue1 += operatorDown.textContent;
+      currentInput = 2;
+      equalsButtonClicked = false;
+      operatorClicked = true;
+      operateSelection = 3;
+      calcDisplay.textContent = inputValue1;
+        };
+} else if (operatorClicked === true) {
+  if (inputValue2 != "" && operatorDown.id === "equals") {
+     if (operateSelection == 3 && inputValue2 == 0) {
+       inputValue1 = "0";
+       alert("Can not divide by 0");
+       calcDisplay.textContent = "Error";
+       currentInput = 1;
+       operatorClicked = false;
+       inputValue2 = "";
+       operatorDown.id = "equals-active";
+     } else {
+       inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
+       calcDisplay.textContent = inputValue1;
+       operatorClicked = false;
+       inputValue2 = "";
+       currentInput = "display";
+       equalsButtonClicked = true;
+       operatorDown.id = "equals-active";
+     }
+   }
+ }
+});
+
+//Operator Key Up -----
+window.addEventListener('keyup', function(e) {
+  const operatorUp = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  if (operatorUp.id != "decimal" && operatorUp.id != "delete") {
+  if (operatorUp.id === "active-id" && operatorUp.textContent === "+") {
+    operatorUp.id = "add";
+  } else if (operatorUp.id === "active-id" && operatorUp.textContent === "-") {
+operatorUp.id = "subtract";
+  } else if (operatorUp.id === "equals-active") {
+operatorUp.id = "equals";
+  }else {
+    operatorUp.className = "button";
+  };
+};
+})
+//Operator Click / Press End ----
 
 //takes user's 1st and 2nd input and calls the function for the specified operator -
  const operate = function (operator, value1, value2) {
