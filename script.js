@@ -5,6 +5,7 @@ const deleteButton = document.querySelector('#delete');
 const buttons = document.querySelectorAll('.button');
 const operatorButtons = document.querySelectorAll('.button-operator');
 const decimalButton = document.querySelector('#decimal');
+const equalsButton = document.querySelector('#equals');
 let inputValue1 = "0";
 let inputValue2 = "";
 let currentInput = 1;
@@ -12,6 +13,8 @@ let operatorClicked = false;
 let equalsButtonClicked = false;
 let decimalClicked = false;
 let keydown = false;
+let tooLong = 1000000000;
+let disableDelete = false;
 
 
 
@@ -65,6 +68,8 @@ clearButton.addEventListener('mousedown', function () {
   operatorClicked = false;
   equalsButtonClicked = false;
   decimalClicked = false;
+  disableDelete = false;
+  equalsButton.id = "equals";
 });
 //Clear MouseUp -----
 clearButton.addEventListener('mouseup', function () {
@@ -73,6 +78,7 @@ clearButton.addEventListener('mouseup', function () {
 
 //Delete MouseDown ----
 deleteButton.addEventListener('mousedown', function () {
+  if (!disableDelete) {
   deleteButton.id = "delete-active";
   if (currentInput == 1) {
 inputValue1 = inputValue1.substring(0, inputValue1.length - 1);
@@ -89,6 +95,7 @@ calcDisplay.textContent = inputValue1;
     equalsButtonClicked = false;
     currentInput = 1;
   }
+}
 });
 
 //Delete MouseUp ----
@@ -321,11 +328,22 @@ operateSelection = 3;
         inputValue2 = "";
       } else {
         inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
-        calcDisplay.textContent = inputValue1;
-        operatorClicked = false;
+if (inputValue1 <= tooLong) {
+  calcDisplay.textContent = inputValue1;
+  currentInput = "display";
+  operatorClicked = false;
         inputValue2 = "";
-        currentInput = "display";
         equalsButtonClicked = true;
+} else {
+  calcDisplay.textContent = "Error";
+  alert("Value is too Large, please press clear to continue");
+  inputValue1 = "";
+  currentInput = 1;
+  operatorClicked = true;
+  decimalClicked = true;
+  equalsButtonClicked = true;
+  disableDelete = true;
+}
       }
     }
   }
