@@ -106,7 +106,7 @@ deleteButton.addEventListener('mouseup', function () {
 //Delete Key Down ---
 window.addEventListener('keydown', function (e) {
 const deleteKey = document.querySelector(`div[data-key="${e.keyCode}"]`);
-if (deleteKey.textContent === "DELETE") {
+if (deleteKey.textContent === "DELETE" && !disableDelete) {
   deleteButton.id = "delete-active";
   if (currentInput == 1) {
 inputValue1 = inputValue1.substring(0, inputValue1.length - 1);
@@ -344,7 +344,7 @@ if (inputValue1 <= tooLong) {
   equalsButtonClicked = true;
   disableDelete = true;
 }
-      }
+      };
     }
   }
 }));
@@ -412,14 +412,24 @@ if (operatorClicked === false) {
        inputValue2 = "";
        operatorDown.id = "equals-active";
      } else {
-       inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
-       calcDisplay.textContent = inputValue1;
-       operatorClicked = false;
-       inputValue2 = "";
-       currentInput = "display";
-       equalsButtonClicked = true;
-       operatorDown.id = "equals-active";
-     }
+      inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
+if (inputValue1 <= tooLong) {
+calcDisplay.textContent = inputValue1;
+currentInput = "display";
+operatorClicked = false;
+      inputValue2 = "";
+      equalsButtonClicked = true;
+} else {
+calcDisplay.textContent = "Error";
+alert("Value is too Large, please press clear to continue");
+inputValue1 = "";
+currentInput = 1;
+operatorClicked = true;
+decimalClicked = true;
+equalsButtonClicked = true;
+disableDelete = true;
+}
+    };
    }
  }
 });
