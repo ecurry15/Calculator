@@ -15,6 +15,7 @@ let decimalClicked = false;
 let keydown = false;
 let tooLong = 1000000000;
 let disableDelete = false;
+let operatorJustClicked = false;
 
 
 
@@ -70,6 +71,7 @@ clearButton.addEventListener('mousedown', function () {
   decimalClicked = false;
   disableDelete = false;
   equalsButton.id = "equals";
+  operatorJustClicked = false;
 });
 //Clear MouseUp -----
 clearButton.addEventListener('mouseup', function () {
@@ -78,7 +80,7 @@ clearButton.addEventListener('mouseup', function () {
 
 //Delete MouseDown ----
 deleteButton.addEventListener('mousedown', function () {
-  if (!disableDelete) {
+  if (!disableDelete && !operatorJustClicked) {
   deleteButton.id = "delete-active";
   if (currentInput == 1) {
 inputValue1 = inputValue1.substring(0, inputValue1.length - 1);
@@ -106,7 +108,7 @@ deleteButton.addEventListener('mouseup', function () {
 //Delete Key Down ---
 window.addEventListener('keydown', function (e) {
 const deleteKey = document.querySelector(`div[data-key="${e.keyCode}"]`);
-if (deleteKey.textContent === "DELETE" && !disableDelete) {
+if (deleteKey.textContent === "DELETE" && !disableDelete && !operatorJustClicked) {
   deleteButton.id = "delete-active";
   if (currentInput == 1) {
 inputValue1 = inputValue1.substring(0, inputValue1.length - 1);
@@ -139,6 +141,7 @@ window.addEventListener('keyup', function(e) {
 //Decimal Click ----------------
 decimalButton.addEventListener('mousedown', function() {
   if (equalsButtonClicked === false && decimalClicked === false) {
+    operatorJustClicked = false;
     decimalButton.id = "active-id";
     decimalClicked = true;
     if (currentInput === 1) {
@@ -173,6 +176,7 @@ const decimalpress = document.querySelector(`div[data-key="${e.keyCode}"]`);
 if (decimalpress.textContent == "." && equalsButtonClicked === false && decimalClicked === false) {
   decimalButton.id = "active-id";
     decimalClicked = true;
+    operatorJustClicked = false;
     if (currentInput === 1) {
       if (inputValue1 === "0") {
         inputValue1 = decimalButton.textContent;
@@ -208,6 +212,7 @@ window.addEventListener('keyup', function(e) {
 buttons.forEach(button => button.addEventListener('mousedown', function () {
  if (equalsButtonClicked === false) {
   button.className = "active-button";
+  operatorJustClicked = false;
   if (currentInput === 1) {
     if (inputValue1 === "0") {
       inputValue1 = button.textContent;
@@ -250,6 +255,7 @@ window.addEventListener('keydown', function(e) {
   if (keyPressed.id >= 0 && keyPressed.id <= 9 && equalsButtonClicked === false && keydown === false && keyPressed.id != "decimal") {
     keyPressed.className = "active-button";
     keydown = true;
+    operatorJustClicked = false;
     if (currentInput === 1) {
       if (inputValue1 === "0") {
         inputValue1 = keyPressed.textContent;
@@ -293,6 +299,7 @@ if (button.id === "add") {
     operatorClicked = true;
     equalsButtonClicked = false;
     operateSelection = 0;
+    operatorJustClicked = true;
   } else if (button.id === "subtract") {
     button.id = "active-id";
     inputValue1 += button.textContent;
@@ -300,6 +307,7 @@ if (button.id === "add") {
     operatorClicked = true;
     equalsButtonClicked = false;
     operateSelection = 1;
+    operatorJustClicked = true;
   } else if (button.id === "multiply") {
     button.className = "active-button";
     inputValue1 += button.textContent;
@@ -307,6 +315,7 @@ if (button.id === "add") {
     operatorClicked = true;
     equalsButtonClicked = false;
     operateSelection = 2;
+    operatorJustClicked = true;
   } else  if (button.id === "divide") {
 button.className = "active-button";
 inputValue1 += button.textContent;
@@ -314,6 +323,7 @@ currentInput = 2;
 equalsButtonClicked = false;
 operatorClicked = true;
 operateSelection = 3;
+operatorJustClicked = true;
   };
   calcDisplay.textContent = inputValue1;
   } else if (operatorClicked === true) {
@@ -375,6 +385,7 @@ if (operatorClicked === false) {
       operateSelection = 0;
       decimalClicked = false;
       calcDisplay.textContent = inputValue1;
+      operatorJustClicked = true;
     } else if (operatorDown.id === "subtract") {
       operatorDown.id = "active-id";
       inputValue1 += operatorDown.textContent;
@@ -384,6 +395,7 @@ if (operatorClicked === false) {
       operateSelection = 1;
       decimalClicked = false;
       calcDisplay.textContent = inputValue1;
+      operatorJustClicked = true;
     } else if (operatorDown.id === "multiply") {
       operatorDown.className = "active-button";
       inputValue1 += operatorDown.textContent;
@@ -392,6 +404,7 @@ if (operatorClicked === false) {
       equalsButtonClicked = false;
       operateSelection = 2;
       calcDisplay.textContent = inputValue1;
+      operatorJustClicked = true;
     } else  if (operatorDown.id === "divide") {
       operatorDown.className = "active-button";
       inputValue1 += operatorDown.textContent;
@@ -400,6 +413,7 @@ if (operatorClicked === false) {
       operatorClicked = true;
       operateSelection = 3;
       calcDisplay.textContent = inputValue1;
+      operatorJustClicked = true;
         };
 } else if (operatorClicked === true) {
   if (inputValue2 != "" && operatorDown.id === "equals") {
