@@ -14,6 +14,7 @@ let equalsButtonClicked = false;
 let decimalClicked = false;
 let keydown = false;
 let tooLong = 1000000000;
+let tooLongNegative = -100000000;
 let disableDelete = false;
 let operatorJustClicked = false;
 
@@ -338,7 +339,7 @@ operatorJustClicked = true;
         inputValue2 = "";
       } else {
         inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
-if (inputValue1 <= tooLong) {
+if (inputValue1 <= tooLong && inputValue1 >= tooLongNegative) {
   calcDisplay.textContent = inputValue1;
   currentInput = "display";
   operatorClicked = false;
@@ -427,7 +428,7 @@ if (operatorClicked === false) {
        operatorDown.id = "equals-active";
      } else {
       inputValue1 = operate(operateChoices[operateSelection], parseFloat(inputValue1), parseFloat(inputValue2));
-if (inputValue1 <= tooLong) {
+if (inputValue1 <= tooLong && inputValue1 >= tooLongNegative) {
 calcDisplay.textContent = inputValue1;
 currentInput = "display";
 operatorClicked = false;
