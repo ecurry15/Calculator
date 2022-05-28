@@ -340,6 +340,8 @@ cursor: pointer;
     }
 }
 
+/* --------    */
+
 @media (min-width: 2000px) {
   .calc-body {
   width: 480px;
@@ -373,6 +375,6 @@ cursor: pointer;
     row-gap: 18px;
     column-gap: 8px;
   }
-
 }
 
+/* Media Queries -END*/
