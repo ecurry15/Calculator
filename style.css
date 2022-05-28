@@ -43,7 +43,7 @@ box-shadow: inset .6px -7px 20px rgba(0, 0, 0, .9), 0px 20px 10px -13px #111;
   text-align: end;
   border-style: none;
 border-width: 1.7px;
-box-shadow: inset 3px -2.5px 9px rgb(73, 73, 73);
+box-shadow: inset 2.5px -1.5px 9px rgb(73, 73, 73);
 user-select: none;
 }
 
@@ -242,5 +242,139 @@ cursor: pointer;
   box-shadow: inset -.5px -1.8px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
   padding-top: .5%;
 }
+/* HOVERS - End*/
 
+/* Media Queries */
+@media (max-width: 600px) {
+  .calc-body {
+  width: 280px;
+  height: 400px;
+  }
 
+  .calc-display {
+    font-size: 1.7rem;
+    width: 245px;
+    height: 52px;
+  box-shadow: inset 2.5px -1.5px 9px rgb(73, 73, 73);
+  padding-right: 15px;
+  border-radius: 16px;
+  padding-top: 6.5px;
+  margin-top: 8.3%;
+  }
+
+  .clear-delete {
+    width: 240px;
+    height: 45px;
+    margin-top: 6.4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 13.5px;
+  }
+
+  .grid-container {
+    width: 245px;
+    height: 210px;
+    margin-top: 6%;
+    row-gap: 13px;
+    column-gap: 6px;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding-top: 15%;
+    box-shadow: inset -.5px -1.2px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+  }
+
+  .button-operator {
+    background-color: #d6d6cd;
+    border-radius: 10px;
+    box-shadow: inset -.5px -1.2px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 15%;
+  }
+
+  #equals {
+    background-color: rgb(253, 188, 67);
+    color: white;
+    font-size: 1.6rem;
+   padding-top: 3%;
+  }
+  
+  #add {
+    font-size: 1.5rem;
+    padding-top: 4.2%;
+  }
+
+  #subtract {
+    font-size: 1.6rem;
+    padding-top: 3%;
+  }
+  
+  #decimal {
+    font-size: 1.6rem; 
+  }
+
+  #clear {
+    background-color: salmon;
+    border-radius: 6px;
+    padding-top: 10%;
+    letter-spacing: .1rem;
+    box-shadow: inset -.5px -1.7px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    font-size: .8rem;
+    }
+    
+    #delete {
+      border-radius: 6px;
+      padding-top: 10%;
+      letter-spacing: .1rem;
+      box-shadow: inset -.5px -1.7px 5px 1px rgba(0, 0, 0, .65), inset .6px -.8px 2px .1px rgba(0, 0, 0, 0.4);
+      font-size: .8rem;
+    }
+
+    .instruction {
+      font-size: 1.2rem;
+      margin-top: 20%;
+    }
+}
+
+/* --------    */
+
+@media (min-width: 2000px) {
+  .calc-body {
+  width: 480px;
+  height: 600px;
+  }
+
+  .calc-display {
+    font-size: 2.5rem;
+    width: 400px;
+    height: 80px;
+  box-shadow: inset 2.5px -1.5px 9px rgb(73, 73, 73);
+  padding-right: 15px;
+  border-radius: 16px;
+  padding-top: 12px;
+  margin-top: 8.3%;
+  }
+
+  .clear-delete {
+    width: 400px;
+    height: 70px;
+    margin-top: 6.4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 13.5px;
+  }
+
+  .grid-container {
+    width: 400px;
+    height: 300px;
+    margin-top: 6%;
+    row-gap: 18px;
+    column-gap: 8px;
+  }
+}
+
+/* Media Queries -END*/
